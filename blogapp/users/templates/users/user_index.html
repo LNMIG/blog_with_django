@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Satisfy&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Medula One&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/user_index.css' %}">
+  <title>Blog Users List</title>
+</head>
+<body>
+  <h1 class='title'>
+    {{ 'Lista de Usuarios registrados' }}
+  </h1>
+
+  <div class='main_reg_fields'>
+    <span>Nombre</span>
+    <span>Apellido</span>
+    <span>Email</span>
+    <span>UserName</span>
+    <span>Teléfono</span>
+    <span>Rol</span>
+    <span>Usuario desde</span>
+    <span>Estado</span>
+    <span class='span_avatar'>Avatar</span>
+  </div>
+
+{% if users_list %}
+  <ul class='unordered_list'>
+    {% for user in users_list %}
+      <fieldset>
+        <li class='campo_de_lista'>
+          <span> 
+            <a href="{% url 'users:detail' user.id %}">
+              <h4>{{ user.first_name }}</h4>
+            </a>
+          </span>
+          <span><h5>{{ user.last_name }}</h5></span>
+          <span><h5>{{ user.email }}</h5></span>
+          <span><h5>{{ user.username }}</h5></span>
+          <span><h5>{{ user.phone }}</h5></span>
+          <span><h5>{{ user.rol }}</h5></span>
+          <span><h5>{{ user.creation_date }}</h5></span>
+          <span><h5>{{ user.is_active }}</h5></span>
+          <span><img src="{{ user.avatar }}" alt="User Avatar"></span>
+        </li>
+      </fieldset>
+    {% endfor %}
+  </ul>
+{% else %}
+  <legend class='not_available'>
+    <p>No data available</p>
+  </legend>
+{% endif %}
+</body>
+</html>

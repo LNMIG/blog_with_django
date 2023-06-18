@@ -1,0 +1,38 @@
+body {
+  background-color: #283149;
+}
+
+.title {
+  background-color: #FCA205;
+  margin-top: 0;
+  padding: 20px 20px 20px 40px;
+  text-align: center;
+  font-family: 'Lobster';
+  color: #ffffff;
+  font-size: 5rem;
+}
+
+.unordered_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+.campo_de_lista {
+  width: 30vw;
+  list-style: none;
+  text-align: center;
+  border: 1px solid #dbedf3;
+  box-shadow: 0.2em 0.2em 0.3em 0.2em #4592af;
+  border-radius: 100% 0% 100% 0% / 46% 42% 58% 54%
+}
+
+.rol_type {
+  font-family: 'Satisfy';
+}
+
+.rol_type h3 {
+  color: #FCA205;
+  font-size: 3rem;
+}

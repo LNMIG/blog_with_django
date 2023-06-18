@@ -1,0 +1,107 @@
+body {
+  background-color: #283149;
+}
+
+.title {
+  background-color: #FCA205;
+  margin-top: 0;
+  padding: 20px 20px 20px 40px;
+  text-align: center;
+  font-family: 'Lobster';
+  color: #ffffff;
+  font-size: 5rem;
+}
+
+.main_reg_fields {
+  width: 95vw;
+  height: 4rem;
+  margin: 0rem auto 0rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #dbedf3;
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #dbedf3;
+  box-shadow: 0.2em 0.2em 0.3em 0.2em #4592af;
+}
+
+.main_reg_fields span, .campo_de_lista span {
+  width: 10.5vw;
+  padding-left: 1rem;
+}
+
+.main_reg_fields .span_avatar {
+  padding-left: 0rem;
+  text-align: center;
+}
+
+.unordered_list {
+  width: 95vw;
+  margin: 0rem auto 0rem auto;
+  padding: 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.campo_de_lista {
+  width: 95vw;
+  margin: 0rem auto 0rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  border-bottom-right-radius: 1rem;
+  border-bottom: 1px solid #dbedf3;
+}
+
+.campo_de_lista a {
+  text-decoration: none;
+}
+
+.campo_de_lista h4 {
+  text-align: start;
+  font-family: 'Satisfy';
+  font-size: 2rem;
+  color: #FCA205;
+}
+
+.campo_de_lista h5 {
+  text-align: start;
+  font-family: 'Medula One';
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.campo_de_lista img {
+  object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
+  width: 3rem;
+  height: 3rem;
+
+}
+
+.not_available {
+  width: 30vw;
+  padding-top: 1rem;
+  margin: 5rem auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dbedf3;
+  border-radius: 100% 0% 100% 0% / 46% 42% 58% 54%;
+}
+
+.not_available p {
+  font-family: 'Satisfy';
+  font-size: 5rem;
+  color: #FCA205;
+}

@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Satisfy&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/rol_index.css' %}">
+  <title>Blog Users List</title>
+</head>
+<body>
+  <h1 class="title">
+  {{ 'Lista de Roles' }}
+  </h1>
+
+  {% if rols_list %}
+    <ul class="unordered_list">
+
+      {% for rol in rols_list %}
+        <fieldset class='campo_de_lista'>
+          <li class='rol_type'>
+              <h3>{{ rol.type }}</h3>
+          </li>
+        </fieldset>
+        <br>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <legend class='not_available'>
+      <p>No data available</p>
+    </legend>
+  {% endif %}
+</body>
+</html>
+
