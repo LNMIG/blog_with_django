@@ -1,0 +1,117 @@
+{% load static %}
+{% static "images/defaultadmin.png" as defaultadmin %}
+{% static "images/defaultcollaborator.png" as defaultcollab %}
+{% static "images/defaultpublic.png" as defaultpublic %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Satisfy&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Medula One&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+  <title>User Attributes</title>
+</head>
+<body>
+  <h1 class='title'>
+    {{ 'Atributos del usuario' }}
+  </h1>
+
+{% comment %} Listamos los campos / atributos que mostraremos del usuario {% endcomment %}
+  <div class='main_reg_fields'>
+    <span>Nombre</span>
+    <span>Apellido</span>
+    <span>Email</span>
+    <span>UserName</span>
+    <span>Teléfono</span>
+    <span>Rol</span>
+    <span>Usuario desde</span>
+    <span>Estado</span>
+    <span class='span_avatar'>Avatar</span>
+  </div>
+
+{% comment %} Obtenemos cada atributo del usuario {% endcomment %}
+  <ul class='unordered_list'>
+    <li class='campo_de_lista'>
+      <span><h5>{{ user.first_name }}</h5></span>
+      <span><h5>{{ user.last_name }}</h5></span>
+      <span><h5>{{ user.email }}</h5></span>
+      <span><h4>{{ user.username }}</h4></span>
+      <span><h5>{{ user.phone }}</h5></span>
+      <span><h5>{{ user.rol }}</h5></span>
+      <span><h5>{{ user.creation_date }}</h5></span>
+      <span><h5>{{ user.is_active|yesno:"Activo, Inactivo," }}</h5></span>
+      <span>
+        <img
+          src=" {% if user.avatar %}
+                  {{user.avatar}}
+                {% elif user.rol.type == "admin" %}
+                  {{ defaultadmin }}
+                {% elif user.rol.type == "collaborator" %}
+                  {{ defaultcollab }}
+                {% else %}
+                  {{ defaultpublic }} 
+                {%endif%}"
+                alt="User Avatar"
+        >
+      </span>
+    </li>
+  </ul>
+
+{% comment %} Proponemos cambiar el ROL del usuario {% endcomment %}
+  <br>
+  <br>
+  <h1 class='title'>
+    {{ 'cambia el rol del usuario' }}
+  </h1>
+
+  <form
+    action='{% url 'users:update' user.id %}'
+    method='post'
+  >
+    {% csrf_token %}
+    {% if error_message %}
+      <span class='error_message'>
+        {{ error_message }}
+      </span>
+    {% endif %}
+
+    <ul class="unordered_list">
+      {% for rol in rols_list %}
+        <span class='campo_de_lista_rol'>
+          <label class='rol_type'
+            for="rol{{ forloop.counter}}"
+            style="cursor: pointer;"
+          >
+            {{ rol.type }}
+          </label>
+          <input
+            type="radio"
+            name="rol"
+            id="rol{{ forloop.counter}}"
+            value="{{ rol.id }}"
+            style="cursor: pointer;"
+          >
+        </span>
+        <br>
+      {% endfor %}
+
+      <span  class='submit'>
+        <input type="submit" value="update">
+      </span>
+      <br>
+      <span  class='return_to_user_list'>
+        <a href=" {% url 'users:user_index' %} ">
+          ¿Quieres ir al listado de Usuarios?
+        </a>
+      </span>
+    
+    </ul>
+
+  </form>
+</body>
+</html>

@@ -36,3 +36,21 @@ body {
   color: #FCA205;
   font-size: 3rem;
 }
+
+.not_available {
+  width: 30vw;
+  padding-top: 1rem;
+  margin: 5rem auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dbedf3;
+  border-radius: 100% 0% 100% 0% / 46% 42% 58% 54%;
+}
+
+.not_available p {
+  font-family: 'Satisfy';
+  font-size: 5rem;
+  color: #FCA205;
+}

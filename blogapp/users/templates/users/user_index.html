@@ -1,4 +1,7 @@
 {% load static %}
+{% static "images/defaultadmin.png" as defaultadmin %}
+{% static "images/defaultcollaborator.png" as defaultcollab %}
+{% static "images/defaultpublic.png" as defaultpublic %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,8 +49,22 @@
           <span><h5>{{ user.phone }}</h5></span>
           <span><h5>{{ user.rol }}</h5></span>
           <span><h5>{{ user.creation_date }}</h5></span>
-          <span><h5>{{ user.is_active }}</h5></span>
-          <span><img src="{{ user.avatar }}" alt="User Avatar"></span>
+          {% comment %} <span><h5>{% if user.is_active %} Activo {% else %} Inactivo {% endif %}</h5></span> {% endcomment %}
+          <span><h5>{{ user.is_active|yesno:"Activo, Inactivo," }}</h5></span>
+          <span>
+            <img
+              src=" {% if user.avatar %}
+                      {{user.avatar}}
+                    {% elif user.rol.type == "admin" %}
+                      {{ defaultadmin }}
+                    {% elif user.rol.type == "collaborator" %}
+                      {{ defaultcollab }}
+                    {% else %}
+                      {{ defaultpublic }} 
+                    {%endif%}"
+                    alt="User Avatar"
+            >
+          </span>
         </li>
       </fieldset>
     {% endfor %}
