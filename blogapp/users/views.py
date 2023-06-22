@@ -58,3 +58,4 @@ def update(request, user_id):
 
 class RegistrationView(generic.FormView):
     pass
+

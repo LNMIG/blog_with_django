@@ -126,9 +126,17 @@ body {
   color: red;
 }
 
-.return_to_user_list, .return_to_user_list a {
+.return_to_user_list, .return_to_user_list a{
   width: fit-content;
   padding: 0rem 2rem;
   text-decoration: none;
-  color:#ffffff;
+  color: #ffffff
+}
+
+.return_to_user_list:hover {
+  background-color: aquamarine;
+}
+
+.return_to_user_list a:hover {
+  color:black
 }
